@@ -1,0 +1,140 @@
+    * {
+        font-family: 'Barlow Semi Condensed', sans-serif;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+     :root {
+        --orange: rgba(255, 81, 0, 0.829);
+        --blue: rgba(0, 225, 255, 0.589);
+        --duration: 2s;
+        --shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    body {
+        animation: backgroundBody infinite alternate var(--duration);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    
+    @keyframes backgroundBody {
+        0% {
+            background-color: var(--orange);
+        }
+        100% {
+            background-color: var(--blue);
+        }
+    }
+    /* ------------------------------------ */
+    
+    .container {
+        width: 400px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.705);
+        position: relative;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        transform: rotate(0deg);
+        animation: rotateContainer infinite alternate var(--duration);
+        box-shadow: var(--shadow);
+    }
+    
+    @keyframes rotateContainer {
+        0% {
+            transform: rotate(-20deg);
+        }
+        100% {
+            transform: rotate(20deg);
+        }
+    }
+    /* ------------------------------------------ */
+    
+    .container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0%;
+        width: 10%;
+        height: 5px;
+        animation: borderContainer alternate infinite var(--duration);
+    }
+    
+    @keyframes borderContainer {
+        0% {
+            background-color: var(--orange);
+            width: 10%;
+        }
+        100% {
+            background-color: var(--blue);
+            width: 95%;
+        }
+    }
+    /* ---------------------------------------- */
+    
+    .ball {
+        position: fixed;
+        top: -100px;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        animation: ballMove infinite alternate var(--duration);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+    }
+    
+    @keyframes ballMove {
+        0% {
+            right: 0;
+            background-color: var(--orange);
+        }
+        100% {
+            right: 80%;
+            background-color: var(--blue);
+        }
+    }
+    /* ---------------------------------------- */
+    
+    .ball::after {
+        content: "";
+        position: absolute;
+        bottom: 35%;
+        width: 180%;
+        height: 100%;
+        z-index: 2;
+        border-radius: 50%;
+        animation: rotateBallInside infinite alternate var(--duration);
+        background-color: white;
+    }
+    
+    @keyframes rotateBallInside {
+        0% {
+            bottom: 35%;
+            transform: rotate(360deg);
+            width: 180%;
+            border-radius: 50%;
+        }
+        100% {
+            bottom: 100%;
+            width: 100%;
+            transform: rotate(0%);
+            border-radius: 80%;
+        }
+    }
+    /* --------------------------------------------- */
+    
+    .ball::before {
+        content: "";
+        position: absolute;
+        top: 75%;
+        left: 25%;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        z-index: 3;
+        background-color: white;
+        box-shadow: var(--shadow);
+    }
